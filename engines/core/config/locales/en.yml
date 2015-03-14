@@ -1,0 +1,5 @@
+en:
+  activerecord:
+    attributes:
+      core/user:
+        password_confirmation: 'Password Confirmation'

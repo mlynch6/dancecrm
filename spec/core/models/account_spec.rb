@@ -68,6 +68,27 @@ module Core
 				user = @account.build_owner
 				expect(@account.owner).to eq user
 			end
+			
+	
+			it "has many users" do
+				#Owner + 2 below
+				FactoryGirl.create(:user, account: @account)
+				FactoryGirl.create(:user, account: @account)
+				
+				expect(@account.users.count).to eq 3
+			end
+			
+			it "deletes associated users" do
+				FactoryGirl.create(:user, account: @account)
+				FactoryGirl.create(:user, account: @account)
+				
+				users = @account.users
+				@account.destroy
+				users.each do |user|
+					expect(Core::User.find_by_id(user.id)).to be_nil
+				end
+			end
+			
 		end
 
   end

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dancecrm</title>
+  <title>DanceCRM</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<%= render 'layouts/navbar' %>
+<div class="container" role='main'>
+  <%= render 'layouts/flash' %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+  
+  <% if Rails.env.development? %>
+	<div class="row"><%= debug(params) %></div>
+  <% end %>
+</div>
 
 </body>
 </html>
