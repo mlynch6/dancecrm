@@ -56,5 +56,12 @@ group :test do
   gem 'guard-rspec', '~> 4.5.0'
 end
 
+# Add Bootstrap
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'will_paginate-bootstrap', '~> 1.0.1'
+
+# Add Simple_form for form generation
+gem 'simple_form', '~> 3.1.0'
+
 # Add engines
 gem 'core', path: 'engines/core'

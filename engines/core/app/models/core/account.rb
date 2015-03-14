@@ -6,6 +6,7 @@ module Core
 		
 		belongs_to :owner, class_name: 'Core::User'
 		accepts_nested_attributes_for :owner
+		has_many :users, class_name: 'Core::User', dependent: :destroy
 		
 		before_validation { self.subdomain = subdomain.to_s.downcase }
 		
