@@ -8,5 +8,5 @@
 %>
 
 <% flash.each do |key, msg| %>
-  <div class="<%= flash_classes[key] %>"><%= msg %></div>
+  <div class="<%= flash_classes[key.to_sym] %>"><%= msg %></div>
 <% end %>
