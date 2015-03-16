@@ -16,7 +16,6 @@ module Core
 				flash[:success] = 'Your account was successfully created.'
 				redirect_to core.root_url(subdomain: @account.subdomain)
 			else
-				flash[:error] = 'Sorry, your account could not be created.'
 				render :new
 			end
 		end
