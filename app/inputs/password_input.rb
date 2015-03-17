@@ -3,7 +3,7 @@ class PasswordInput < SimpleForm::Inputs::PasswordInput
 	def input(wrapper_options)
 		template.content_tag(:div, class: 'input-group') do
 			template.concat template.content_tag(:span, template.content_tag(:span, nil, class: 'glyphicon glyphicon-lock'), class: 'input-group-addon')
-			template.concat super
+			template.concat @builder.password_field(attribute_name, input_html_options)
 		end
 	end
 	

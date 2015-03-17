@@ -3,3 +3,10 @@
 body { 
   padding-top: 70px; // For the nav bar
 }
+.footer {
+  color: $gray-light;
+  border-top: 1px solid $gray-lighter;
+  margin-top: 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}

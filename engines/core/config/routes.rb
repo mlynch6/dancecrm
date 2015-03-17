@@ -1,11 +1,14 @@
+require "core/constraints/subdomain_required"
+
 Core::Engine.routes.draw do
-	# constraints(Core::Constraints::SubdomainRequired) do
-	# 	scope module: 'account' do
-	# 		root to: 'dashboard#index', as: :account_root
-	# 		get  '/sign_in', to: 'sessions#new', 	as: :sign_in
-	# 		post '/sign_in', to: 'sessions#create', 	as: :sessions
-	# 	end
-	# end
+	constraints(Core::Constraints::SubdomainRequired) do
+		scope module: 'my_account' do
+			root to: 'dashboard#index', as: :dashboard
+			get  '/sign_in', to: 'sessions#new'
+			post '/sign_in', to: 'sessions#create', 	as: :sessions
+			get '/signout', to: 'sessions#destroy'
+		end
+	end
 	
 	root "home#index"
 	
