@@ -12,9 +12,7 @@ feature "Account Sign-Up" do
 		fill_in "Password Confirmation", with: "password"
 		click_button "Create Account"
 		
-		#check that sign-up was success
-		success_message = "Your account was successfully created."
-		expect(page).to have_content success_message
+		expect(page).to have_success_message "Your account was successfully created."
 		
 		# check user logged in
 		expect(page).to have_content 'test@example.com'
@@ -34,8 +32,7 @@ feature "Account Sign-Up" do
 		fill_in "Password Confirmation", with: "password"
 		click_button "Create Account"
 		
-		#check for error
-		expect(page).to have_content "Please correct the following problems"
+		expect(page).to have_error_message "Please correct the following problems"
 	end
 	
 	scenario "shows an error when subdomain is not unique" do
@@ -50,10 +47,8 @@ feature "Account Sign-Up" do
 		fill_in "Password Confirmation", with: "password"
 		click_button "Create Account"
 		
-		#check for error
-		error_message = 'Subdomain has already been taken'
-		expect(page).to have_content "Please correct the following problems"
-		expect(page).to have_content error_message
+		expect(page).to have_error_message "Please correct the following problems"
+		expect(page).to have_error_message 'Subdomain has already been taken'
 	end
 	
 	scenario "shows an error when subdomain uses restricted word" do
@@ -67,10 +62,8 @@ feature "Account Sign-Up" do
 		fill_in "Password Confirmation", with: "password"
 		click_button "Create Account"
 		
-		#check for error
-		error_message = 'Subdomain is not allowed. Please choose another subdomain'
-		expect(page).to have_content "Please correct the following problems"
-		expect(page).to have_content error_message
+		expect(page).to have_error_message "Please correct the following problems"
+		expect(page).to have_error_message 'Subdomain is not allowed. Please choose another subdomain'
 	end
 	
 	scenario "shows an error when subdomain uses restricted characters" do
@@ -84,9 +77,7 @@ feature "Account Sign-Up" do
 		fill_in "Password Confirmation", with: "password"
 		click_button "Create Account"
 		
-		#check for error
-		error_message = 'Subdomain is not allowed. Please choose another subdomain'
-		expect(page).to have_content "Please correct the following problems"
-		expect(page).to have_content error_message
+		expect(page).to have_error_message "Please correct the following problems"
+		expect(page).to have_error_message 'Subdomain is not allowed. Please choose another subdomain'
 	end
 end

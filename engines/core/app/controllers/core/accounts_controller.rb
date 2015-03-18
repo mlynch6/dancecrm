@@ -11,12 +11,11 @@ module Core
 			@account = Core::Account.new(account_params)
 			@account.owner.account = @account
 			if @account.save
-				env['warden'].set_user(@account.owner.id, :scope => :user)
-				env['warden'].set_user(@account.id, :scope => :account)
+				warden.set_user(@account.owner, scope: :user)
+				warden.set_user(@account, scope: :account)
 				flash[:success] = 'Your account was successfully created.'
-				redirect_to core.root_url(subdomain: @account.subdomain)
+				redirect_to core.dashboard_url(subdomain: @account.subdomain)
 			else
-				flash[:error] = 'Sorry, your account could not be created.'
 				render :new
 			end
 		end
