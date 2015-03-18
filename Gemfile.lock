@@ -1,4 +1,11 @@
 PATH
+  remote: engines/contacts
+  specs:
+    contacts (0.0.1)
+      rails (~> 4.2.0)
+      simple_form (~> 3.1.0)
+
+PATH
   remote: engines/core
   specs:
     core (0.0.1)
@@ -256,6 +263,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.4.4)
   coffee-rails (~> 4.1.0)
+  contacts!
   core!
   database_cleaner (~> 1.4.0)
   factory_girl_rails (= 4.5.0)

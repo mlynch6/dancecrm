@@ -65,3 +65,4 @@ gem 'simple_form', '~> 3.1.0'
 
 # Add engines
 gem 'core', path: 'engines/core'
+gem 'contacts', path: 'engines/contacts'
