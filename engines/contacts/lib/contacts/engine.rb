@@ -1,3 +1,4 @@
+require 'validates_timeliness'
 require 'simple_form'
 
 module Contacts

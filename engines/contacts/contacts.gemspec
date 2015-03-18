@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2.0"
+	s.add_dependency 'core', '~> 0.0.1'
+	s.add_dependency 'validates_timeliness', '~> 3.0'
 	s.add_dependency 'simple_form', '~> 3.1.0'
 
   s.add_development_dependency "pg"
