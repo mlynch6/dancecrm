@@ -14,5 +14,12 @@ module Core
 			end
 		end
 		
+		config.to_prepare do
+			decorators_path = Core::Engine.root + "app/decorators/**/*.rb"
+			Dir.glob(decorators_path) do |file|
+				Rails.configuration.cache_classes ? require(file) : load(file)
+			end
+		end
+		
   end
 end

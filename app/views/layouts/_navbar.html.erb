@@ -13,14 +13,13 @@
     
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="<%= current_page?(root_path) ? 'active' : '' %>""><%= link_to 'Home', root_path %></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li class="<%= current_page?(core.root_path) ? 'active' : '' %>""><%= link_to 'Home', core.root_path %></li>
+        <li class="<%= current_page?(contacts.root_path) ? 'active' : '' %>""><%= link_to 'Contacts', contacts.root_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li><a href="#profile"><%= current_user.email %></a></li>
-        <li><%= link_to 'Sign Out', signout_path %></li>
+        <li><%= link_to 'Sign Out', core.signout_path %></li>
         <% else %>
         <li class="<%= current_page?(core.sign_in_path) ? 'active' : '' %>"><%= link_to 'Sign In', core.sign_in_path %></li>
         <% end %>
