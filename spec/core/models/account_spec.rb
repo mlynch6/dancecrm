@@ -15,6 +15,9 @@ module Core
  		# accessible attributes
  		it { should respond_to(:name) }
 		it { should respond_to(:owner) }
+		
+		it { should respond_to(:users) }
+		it { should respond_to(:contacts_people) }
 
 		describe '(Validations)' do
 			it "is invalid without a name" do
@@ -86,6 +89,24 @@ module Core
 				@account.destroy
 				users.each do |user|
 					expect(Core::User.find_by_id(user.id)).to be_nil
+				end
+			end
+			
+			it "has many contacts_people" do
+				FactoryGirl.create(:person, account: @account)
+				FactoryGirl.create(:person, account: @account)
+				
+				expect(@account.contacts_people.count).to eq 2
+			end
+			
+			it "deletes associated contacts_people" do
+				FactoryGirl.create(:person, account: @account)
+				FactoryGirl.create(:person, account: @account)
+				
+				people = @account.contacts_people
+				@account.destroy
+				people.each do |person|
+					expect(Contacts::Person.find_by_id(person.id)).to be_nil
 				end
 			end
 			

@@ -2,7 +2,7 @@ module Contacts
   class Person < ActiveRecord::Base
 		GENDERS = ['Female', 'Male']
 		
-		belongs_to :account, class_name: 'Core::Account'
+		scoped_to_account
 		
 		validates :account_id, presence: true
 		validates :first_name, presence: true, length: { maximum: 30 }
