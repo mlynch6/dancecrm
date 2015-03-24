@@ -25,6 +25,7 @@ module Contacts
 		it { should respond_to(:account) }
 		it { should respond_to(:name) }
 		it { should respond_to(:full_name) }
+		it { should respond_to(:contact_type) }
 		
 
   	it "is created as active" do
@@ -145,12 +146,16 @@ module Contacts
 			end
 		end
 		
+		it ".contact_type returns 'Contact'" do
+			expect(@person.contact_type).to eq 'Contact'
+		end
+		
 		describe "(Scopes)" do
 			it "employees scope only shows Employees" do
 				employee = FactoryGirl.create(:employee)
 				person = FactoryGirl.create(:person)
-				records = Contacts::Person.employees
 				
+				records = Contacts::Person.employees
 				expect(records.count).to eq 1
 				expect(records).to include(employee)
 				expect(records).not_to include(person)
@@ -159,11 +164,23 @@ module Contacts
 			it "students scope only shows Students" do
 				student = FactoryGirl.create(:student)
 				person = FactoryGirl.create(:person)
-				records = Contacts::Person.students
 				
+				records = Contacts::Person.students
 				expect(records.count).to eq 1
 				expect(records).to include(student)
 				expect(records).not_to include(person)
+			end
+			
+			it "scoped_to scope only shows People within specified account" do
+				account_a = FactoryGirl.create(:account)
+				person_a = FactoryGirl.create(:person, account: account_a)
+				account_b = FactoryGirl.create(:account)
+				person_b = FactoryGirl.create(:person, account: account_b)
+				
+				records = Contacts::Person.scoped_to(account_a)
+				expect(records.count).to eq 1
+				expect(records).to include(person_a)
+				expect(records).not_to include(person_b)
 			end
 		end
   end

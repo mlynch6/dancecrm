@@ -1,8 +1,6 @@
 ::ApplicationController.class_eval do
 	def current_account
-		if user_signed_in?
-			@current_account ||= current_user.account
-		end
+		@current_account ||= Core::Account.find_by!(subdomain: request.subdomain)
 	end
 	helper_method :current_account
 
@@ -19,9 +17,9 @@
 	helper_method :user_signed_in?
 	
 	def authenticate_user!
-		unless user_signed_in?
+		unless user_signed_in? && current_user.account_id == current_account.id
 			flash[:notice] = 'Please sign in.'
-			redirect_to sign_in_path
+			redirect_to core.sign_in_path
 		end
 	end
 	

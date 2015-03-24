@@ -91,6 +91,32 @@ feature "User Sign In" do
 			# check redirects back to sign in page
 			expect(page.current_url).to eq sign_in_url
 		end
+		
+		scenario "after user successfully signs in, cannot change subdomain to another account" do
+			other_account = FactoryGirl.create(:account)
+			other_root_url = "http://#{other_account.subdomain}.example.com/"
+			other_sign_in_url = "http://#{other_account.subdomain}.example.com/sign_in"
+			visit root_url
+			
+			# check that redirects to sign in page
+			expect(page.current_url).to eq sign_in_url
+		
+			fill_in "Email", with: account.owner.email
+			fill_in "Password", with: account.owner.password
+			click_button "Sign in"
+		
+			expect(page).to have_success_message "Welcome #{account.owner.email}"
+		
+			# check redirects back to root
+			expect(page.current_url).to eq root_url
+			
+			# change subdomain
+			visit other_root_url
+			
+			# check that redirects to sign in page
+			expect(page.current_url).to eq other_sign_in_url
+			expect(page).to have_content 'Please sign in'
+		end
 	end
 
 end

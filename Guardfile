@@ -65,9 +65,11 @@ guard :rspec, cmd: "bin/rspec" do
   watch(rails.spec_helper)     { rspec.spec_dir }
   watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
-
-  # Capybara features specs
-  watch(rails.view_dirs)     { |m| rspec.spec.("features/#{m[1]}") }
+	
+	# Engines
+	watch(%r{^engines/(.+)/app/(.*)\.rb$})     { |m| "#{rspec.spec_dir}/#{m[2]}_spec.rb" }
+	watch(%r{^engines/(.+)/app/controllers/(.*)_(controller)\.rb$})   { |m| "#{rspec.spec_dir}/features/#{m[2]}" }
+	watch(%r{^engines/(.+)/app/views/(.*)(.html)\.erb$})   { |m| "#{rspec.spec_dir}/features/#{m[2]}_spec.rb" }
 
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
