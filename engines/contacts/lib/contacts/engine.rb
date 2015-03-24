@@ -1,5 +1,6 @@
 require 'validates_timeliness'
 require 'simple_form'
+require 'will_paginate'
 
 module Contacts
   class Engine < ::Rails::Engine

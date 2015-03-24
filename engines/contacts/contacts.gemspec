@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
 	s.add_dependency 'core', '~> 0.0.1'
 	s.add_dependency 'validates_timeliness', '~> 3.0'
 	s.add_dependency 'simple_form', '~> 3.1.0'
+	s.add_dependency 'will_paginate', '~> 3.0.6'
 
   s.add_development_dependency "pg"
 end

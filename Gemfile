@@ -60,6 +60,9 @@ end
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
 
+# Add jQuery UI
+gem 'jquery-ui-rails'
+
 # Add Simple_form for form generation
 gem 'simple_form', '~> 3.1.0'
 
