@@ -1,5 +1,6 @@
 module Contacts
-  class ApplicationController < ActionController::Base
-		
+  class ApplicationController < Core::ApplicationController
+		layout 'application'
+		before_filter :authenticate_user!
   end
 end

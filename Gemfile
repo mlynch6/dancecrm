@@ -59,6 +59,7 @@ end
 # Add Bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'bootstrap-switch-rails', '~> 3.3.2'
 
 # Add jQuery UI
 gem 'jquery-ui-rails'

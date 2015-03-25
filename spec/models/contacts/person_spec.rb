@@ -26,6 +26,7 @@ module Contacts
 		it { should respond_to(:name) }
 		it { should respond_to(:full_name) }
 		it { should respond_to(:contact_type) }
+		it { should respond_to(:birth_date_mdY) }
 		
 
   	it "is created as active" do
@@ -148,6 +149,30 @@ module Contacts
 		
 		it ".contact_type returns 'Contact'" do
 			expect(@person.contact_type).to eq 'Contact'
+		end
+		
+		describe ".birth_date_mdY" do
+			it "sets the birth_date" do
+				@person.birth_date_mdY = '4/3/2015'
+				expect(@person.birth_date).to eq Date.new(2015,4,3)
+			end
+			
+			it "setter erases the birth_date if blank" do
+				@person.birth_date = Date.new(2015,4,3)
+				@person.birth_date_mdY = ''
+				expect(@person.birth_date).to be_nil
+			end
+			
+			it "setter erases the birth_date if nil" do
+				@person.birth_date = Date.new(2015,4,3)
+				@person.birth_date_mdY = nil
+				expect(@person.birth_date).to be_nil
+			end
+			
+			it "getter formats the birth_date to m/d/YYYY" do
+				@person.birth_date = Date.new(2015,4,3)
+				expect(@person.birth_date_mdY).to eq '4/3/2015'
+			end
 		end
 		
 		describe "(Scopes)" do

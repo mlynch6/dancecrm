@@ -1,0 +1,11 @@
+<h1 class="page-header">Add Contact</h1>
+
+<%= simple_form_for @person, url: contacts_path, html: {class: 'form-horizontal'} do |f| %>
+  <%= render 'layouts/shared/error_messages', object: @person %>
+  <%= render 'form', :f => f %>
+  
+  <%= form_actions do %>
+    <%= f.button :submit, 'Save' %>
+    <%= link_to 'Cancel', contacts.contacts_path, class: 'btn btn-link' %>
+  <% end %>
+<% end %>
