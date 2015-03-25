@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    attributes:
+      contacts/person:
+        first_name: 'First Name'
+        middle_name: 'Middle Name'
+        last_name: 'Last Name'
+        birth_date: 'Birth Date'
+        birth_date_mdY: 'Birth Date'
+        active: 'Status'

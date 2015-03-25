@@ -11,8 +11,7 @@ module Core
 			@account = Core::Account.new(account_params)
 			@account.owner.account = @account
 			if @account.save
-				warden.set_user(@account.owner, scope: :user)
-				warden.set_user(@account, scope: :account)
+				force_authentication!(@account.owner)
 				flash[:success] = 'Your account was successfully created.'
 				redirect_to core.dashboard_url(subdomain: @account.subdomain)
 			else

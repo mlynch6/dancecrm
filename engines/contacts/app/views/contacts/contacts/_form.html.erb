@@ -1,0 +1,11 @@
+  <%= f.input :first_name %>
+  <%= f.input :middle_name %>
+  <%= f.input :last_name %>
+  <%= f.input :suffix %>
+  <%= f.input :gender, as: :radio_buttons, 
+        collection: Contacts::Person::GENDERS %>
+  <%= f.input :birth_date_mdY, as: :datepicker %>
+  <%= f.input :email, as: :email_icon %>
+  <%= f.input :active, 
+        required: true,
+        checkbox_wrapper_html: {class: 'switch'} %>

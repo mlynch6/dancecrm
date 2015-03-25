@@ -1,7 +1,7 @@
 require_dependency "core/application_controller"
 
 module Core
-  class MyAccount::DashboardController < Core::ApplicationController
+  class MyAccount::DashboardController < ApplicationController
 		before_filter :authenticate_user!
 		
     def index

@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default sub-navbar">
+	<div class="container">
+	
+		<div id="sub-navbar">
+			<ul class="nav navbar-nav">
+				<li class="<%= controller_path == 'contacts/contacts' && ['new','create'].include?(action_name) ? 'active' : '' %>">
+					<%= link_to 'Add Contact', contacts.new_contact_path %>
+				</li>
+				<li class="<%= current_page?(contacts.contacts_path) ? 'active' : '' %>">
+					<%= link_to 'Search Contacts', contacts.contacts_path %>
+				</li>
+			</ul>
+		</div>
+    
+  </div>
+</nav>

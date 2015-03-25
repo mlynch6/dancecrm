@@ -7,7 +7,7 @@ module Core
     end
 		
 		def create
-			if warden.authenticate(:scope => :user)
+			if env['warden'].authenticate(:scope => :user)
 				flash[:success] = "Welcome #{params['user']['email']}"
 				redirect_to dashboard_path
 			else
@@ -18,7 +18,7 @@ module Core
 		end
 		
 		def destroy
-			warden.logout
+			env['warden'].logout
 			flash[:success] = "Logged out!"
 			redirect_to sign_in_url
 		end

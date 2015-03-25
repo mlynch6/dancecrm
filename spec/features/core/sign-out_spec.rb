@@ -29,7 +29,7 @@ feature "User Sign Out" do
 			click_link 'Sign Out'
 		
 			# Try to access Dashboard
-			visit core.dashboard_path(subdomain: account.subdomain)
+			visit "http://#{account.subdomain}.example.com/"
 			
 			# check that redirects to sign in page
 			expect(page.current_url).to eq sign_in_url

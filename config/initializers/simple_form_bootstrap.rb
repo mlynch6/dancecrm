@@ -78,13 +78,13 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_boolean, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
     b.optional :readonly
+		b.use :label, class: 'col-sm-3 col-md-3 control-label'
 
-    b.wrapper tag: 'div', class: 'col-sm-offset-3 col-md-offset-3 col-sm-9 col-md-9' do |wr|
-      wr.wrapper tag: 'div', class: 'checkbox' do |ba|
-        ba.use :label_input, class: 'col-sm-9'
+    b.wrapper tag: 'div', class: 'col-sm-9 col-md-9'  do |ba|
+      ba.wrapper :checkbox_wrapper, tag: 'div', class: 'checkbox' do |chk|
+        chk.use :input
+				chk.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
       end
-
-      wr.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end
 

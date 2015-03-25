@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 body { 
-  padding-top: 70px; // For the nav bar
+  padding-top: 50px; // For the nav bar
 }
 .footer {
   color: $gray-light;
@@ -9,4 +9,19 @@ body {
   margin-top: 30px;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+.navbar { margin-bottom: 0px; }
+.sub-navbar {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  min-height: 25px;
+  padding-left: 75px;
+  padding-right: 75px;
+  .navbar-nav > li > a {
+    padding: 5px 15px;
+    line-height: 15px;
+  }
+}
+.page-header {
+  margin-top: 5px;
 }

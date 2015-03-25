@@ -1,0 +1,12 @@
+label::after {
+  content: ':';
+}
+label abbr {
+  color: #a94442;
+}
+div.checkbox label::after, span.radio label::after {
+  content: '';
+}
+div.switch label {
+  padding-left: 0px;
+}

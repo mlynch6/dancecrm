@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require bootstrap-sprockets
+//= require bootstrap-switch
+//= require jquery-ui/datepicker
 //= require_tree .
